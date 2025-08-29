@@ -1,0 +1,23 @@
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    cursor: pointer;
+    color: rgb(77, 154, 212);
+    background: rgba(0,0,0,0.5);
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.prev-btn { left: 30px; }
+.next-btn { right: 30px; }
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    cursor: pointer;
+}

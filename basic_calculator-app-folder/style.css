@@ -1,0 +1,148 @@
+/* Custom styles for calculator */
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* Light gray background */
+}
+
+.calculator {
+    background-color: #ffffff; /* White background for calculator */
+    border-radius: 1.5rem; /* More rounded corners */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    max-width: 320px;
+    width: 100%;
+}
+
+.display {
+    background-color: #1f2937; /* Dark gray for display */
+    color: #ffffff;
+    font-size: 2.5rem; /* Larger font size */
+    text-align: right;
+    padding: 1rem 1.25rem;
+    border-radius: 0.75rem; /* Rounded corners for display */
+    margin-bottom: 1rem;
+    overflow-x: auto; /* Allow horizontal scrolling for long numbers */
+    white-space: nowrap; /* Prevent wrapping */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    height: 70px; /* Fixed height for display */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+}
+
+.display::-webkit-scrollbar {
+    height: 4px;
+}
+
+.display::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+.display-text {
+    flex-grow: 1;
+    text-overflow: ellipsis; /* Add ellipsis for overflow */
+    overflow: hidden;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem; /* Spacing between buttons */
+}
+
+.button {
+    padding: 1.25rem; /* Larger padding for buttons */
+    font-size: 1.5rem; /* Larger font size for buttons */
+    font-weight: 500;
+    border-radius: 1rem; /* More rounded button corners */
+    background-color: #e5e7eb; /* Light gray button background */
+    color: #374151; /* Darker text color */
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none; /* Prevent text selection */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background-color: #d1d5db; /* Darker gray on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.button:active {
+    background-color: #9ca3af; /* Even darker on active */
+    transform: translateY(0); /* Return to original position */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15); /* Inset shadow for pressed effect */
+}
+
+.button.operator {
+    background-color: #f59e0b; /* Orange for operators */
+    color: #ffffff;
+}
+
+.button.operator:hover {
+    background-color: #ea580c; /* Darker orange on hover */
+}
+
+.button.operator:active {
+    background-color: #b45309; /* Even darker orange on active */
+}
+
+.button.equals {
+    background-color: #10b981; /* Green for equals */
+    color: #ffffff;
+    grid-column: span 2; /* Span two columns */
+}
+
+.button.equals:hover {
+    background-color: #059669; /* Darker green on hover */
+}
+
+.button.equals:active {
+    background-color: #047857; /* Even darker green on active */
+}
+
+.button.clear {
+    background-color: #ef4444; /* Red for clear */
+    color: #ffffff;
+}
+
+.button.clear:hover {
+    background-color: #dc2626; /* Darker red on hover */
+}
+
+.button.clear:active {
+    background-color: #b91c1c; /* Even darker red on active */
+}
+
+/* Message box for errors or temporary messages */
+.message-box {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fefcbf;
+    color: #8a6401;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    font-weight: 500;
+}
+
+.message-box.show {
+    opacity: 1;
+    visibility: visible;
+}

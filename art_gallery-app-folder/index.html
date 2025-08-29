@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0 30px;
+            color: #2c3e50;
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: #2c3e50;
+        }
+
+        /* Gallery Grid */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            transform: translateY(0);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+            border-radius: 4px;
+        }
+
+        .lightbox-caption {
+            color: white;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .close-btn, .prev-btn, .next-btn {
+            position: absolute;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn {
+            top: 20px;
+            right: 30px;
+        }
+
+        .prev-btn, .next-btn {
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 3rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 4px;
+        }
+
+        .prev-btn {
+            left: 30px;
+        }
+
+        .next-btn {
+            right: 30px;
+        }
+
+        .close-btn:hover, .prev-btn:hover, .next-btn:hover {
+            color: #3498db;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .prev-btn, .next-btn {
+                font-size: 2rem;
+                padding: 5px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 80%;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Image Gallery</h1>
+        
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="nature">Nature</button>
+            <button class="filter-btn" data-filter="city">City</button>
+            <button class="filter-btn" data-filter="animals">Animals</button>
+        </div>
+        
+        <!-- Gallery Grid -->
+        <div class="gallery">
+            <!-- Nature Images -->
+            <div class="gallery-item" data-category="nature">
+                <img src="images/wp2722928.jpg" alt="waterfall">
+                <div class="overlay">
+                    <h3>Beautiful Nature</h3>
+                    <p>Scenic landscape with mountains and lake</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="nature">
+                <img src="images/31201.jpg" alt="forest"> 
+                <div class="overlay">
+                    <h3>Forest Path</h3>
+                    <p>Sunlight through the trees</p>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="nature">
+                <img src="images/majestic-waterfall-in-the-middle-of-a-lush-forest-photo.jpg" alt="Nature 3">
+                <div class="overlay">
+                    <h3>Waterfall</h3>
+                    <p>Majestic waterfall</p>
+                </div>
+            </div>
+
+            <!-- City Images -->
+            <div class="gallery-item" data-category="city">
+                <img src="images/OIP.jpeg" alt="City 1">
+                <div class="overlay">
+                    <h3>City Skyline</h3>
+                </div>
+            </div> <!-- ✅ properly closed -->
+
+            <div class="gallery-item" data-category="city">
+                <img src="images/pexels-photo-4947381.jpeg" alt="City 2">
+                <div class="overlay">
+                    <h3>Downtown</h3>
+                    <p>Busy city streets</p>
+                </div>
+            </div>
+
+            <!-- Animal Images -->
+            <div class="gallery-item" data-category="animals">
+                <img src="images/adult-lion-gr.jpg" alt="Animal 1">
+                <div class="overlay">
+                    <h3>Wildlife</h3>
+                    <p>Lion in the savanna</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="animals">
+                <img src="images/346cf45673bd8354116a20f38b8969bc.jpg" alt="Animal 2">
+                <div class="overlay">
+                    <h3>Bird</h3>
+                    <p>Colorful parrot in the jungle</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <!-- Close button -->
+        <span class="close-btn">&times;</span>
+        
+        <!-- Previous button -->
+        <span class="prev-btn">&lt;</span>
+        
+        <!-- Next button -->
+        <span class="next-btn">&gt;</span>
+        
+        <!-- Lightbox content -->
+        <div class="lightbox-content">
+            <img src="" alt="">
+            <div class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    const filter = button.dataset.filter;
+                    
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Lightbox functionality
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxImg = document.querySelector('.lightbox-content img');
+            const lightboxCaption = document.querySelector('.lightbox-caption');
+            const closeBtn = document.querySelector('.close-btn');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            let currentImageIndex = 0;
+            const images = Array.from(document.querySelectorAll('.gallery-item img'));
+            const captions = Array.from(document.querySelectorAll('.gallery-item .overlay'));
+            
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    updateLightbox();
+                    lightbox.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            closeBtn.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            prevBtn.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updateLightbox();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateLightbox();
+            });
+            
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.style.display === 'flex') {
+                    if (e.key === 'Escape') {
+                        lightbox.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    } else if (e.key === 'ArrowLeft') {
+                        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                        updateLightbox();
+                    } else if (e.key === 'ArrowRight') {
+                        currentImageIndex = (currentImageIndex + 1) % images.length;
+                        updateLightbox();
+                    }
+                }
+            });
+            
+            function updateLightbox() {
+                const visibleItems = Array.from(document.querySelectorAll('.gallery-item[style="display: block;"], .gallery-item:not([style])'));
+                const visibleImages = visibleItems.map(item => item.querySelector('img'));
+                const visibleCaptions = visibleItems.map(item => item.querySelector('.overlay'));
+                
+                const relativeIndex = images.indexOf(visibleImages[currentImageIndex % visibleImages.length]);
+                
+                if (relativeIndex !== -1) {
+                    lightboxImg.src = images[relativeIndex].src;
+                    lightboxImg.alt = images[relativeIndex].alt;
+                    lightboxCaption.innerHTML = captions[relativeIndex].innerHTML;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

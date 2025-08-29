@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zaib-un-nisa Arif | Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="style.css">
+
+    <style>
+       
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Custom styles for animations */
+        .section-fade-in {
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            opacity: 1; /* Default to visible */
+        }
+        .section-fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Hidden class to apply initial hidden state only when JS is guaranteed to run */
+        .section-fade-in.hidden-initial {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .project-card-hover:hover .project-image {
+            transform: scale(1.05);
+        }
+        .project-card-hover:hover .project-title {
+            color: rgb(30, 29, 61); /* indigo-600 */
+        }
+        .nav-link-hover:hover {
+            color: #140837; /* violet-400 */
+            transform: translateY(-2px);
+        }
+        /* Style for scroll-smooth (added directly to html tag) */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Header and Navigation -->
+    <header class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold tracking-tight mb-2 sm:mb-0 hover:text-violet-200 transition duration-300">Zaib-un-nisa Arif</a>
+            <div class="flex space-x-6">
+                <a href="index.html#about" class="nav-link-hover text-lg font-medium transition duration-300 transform">About</a>
+                <a href="index.html#skills" class="nav-link-hover text-lg font-medium transition duration-300 transform">Skills</a>
+                <a href="index.html#projects" class="nav-link-hover text-lg font-medium transition duration-300 transform">Projects</a>
+                <a href="resume.html" class="nav-link-hover text-lg font-medium transition duration-300 transform">Resume</a>
+                <a href="contact.html" class="nav-link-hover text-lg font-medium transition duration-300 transform">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <!-- About Section -->
+        <section id="about" class="bg-white rounded-xl shadow-xl p-8 mb-12 section-fade-in hidden-initial">
+            <div class="flex flex-col md:flex-row items-center md:space-x-8">
+                <img src="zicon.png" alt="Your Photo" class="w-40 h-40 rounded-full object-cover shadow-md mb-6 md:mb-0">
+                <div>
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-4">Hello, I'm Zaib-un-nisa </h2>
+                    <p class="text-lg leading-relaxed text-gray-700">
+                        I'm a passionate <span class="font-semibold text-indigo-600"> Web Developer, UI/UX Designer</span> with a knack for creating engaging and efficient solutions. With a background in <span class="font-semibold">Computer Science</span>, I enjoy transforming complex ideas into user-friendly applications and experiences. I'm always eager to learn new technologies and contribute to innovative projects.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="bg-white rounded-xl shadow-xl p-8 mb-12 section-fade-in hidden-initial">
+            <h2 class="text-4xl font-extrabold text-indigo-700 mb-8 text-center">My Skills 🚀</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Frontend Skills -->
+                <div class="bg-indigo-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-2xl font-bold text-indigo-800 mb-3">Frontend</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>JavaScript (ES6+)</li>
+                        <li>React.js</li>
+                        <li>HTML5 & CSS3</li>
+                        <li>Tailwind CSS</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+                <!-- Backend Skills -->
+                <div class="bg-purple-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-2xl font-bold text-purple-800 mb-3">Backend</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Node.js & Express.js</li>
+                        <li>RESTful APIs</li>
+                        <li>Database (MongoDB, PostgreSQL)</li>
+                    </ul>
+                </div>
+                <!-- Other Skills -->
+                <div class="bg-violet-50 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                    <h3 class="text-2xl font-bold text-violet-800 mb-3">Tools & Others</h3>
+                    <ul class="list-disc list-inside text-gray-700 space-y-2">
+                        <li>Git & GitHub</li>
+                        <li>Docker</li>
+                        <li>AWS (S3, EC2)</li>
+                        <li>UI/UX Design</li>
+                        <li>Agile Methodologies</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="bg-white rounded-xl shadow-xl p-8 mb-12 section-fade-in hidden-initial">
+            <h2 class="text-4xl font-extrabold text-indigo-700 mb-8 text-center">My Projects ✨</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project Card 1: Image gallery (Art Gallery App) -->
+                <div class="project-card-hover bg-gray-50 rounded-lg shadow-md overflow-hidden transition duration-300 transform hover:-translate-y-2">
+                    <img src="art_gallery-app-folder/images/imageoutput.PNG" alt="Image gallery Project Screenshot" class="project-image w-full h-48 object-cover transition duration-300">
+                    <div class="p-6">
+                        <h3 class="project-title text-2xl font-bold text-indigo-700 mb-2 transition duration-300">Image gallery</h3>
+                        <p class="text-gray-600 mb-4"> Created an image gallery with different images and a hover effect to preview images.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-indigo-200 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">HTML</span>
+                            <span class="bg-indigo-200 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">CSS</span>
+                            <span class="bg-indigo-200 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">JavaScript</span>
+                        </div>
+                        <a href="art_gallery-app-folder/index.html" class="inline-block bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-medium">View Project</a>
+                    </div>
+                </div>
+                <!-- Project Card 2 -->
+                <div class="project-card-hover bg-gray-50 rounded-lg shadow-md overflow-hidden transition duration-300 transform hover:-translate-y-2">
+                    <img src="basic_calculator-app-folder/images/Capture.PNG" alt="Project 2" class="project-image w-full h-48 object-cover transition duration-300">
+                    <div class="p-6">
+                        <h3 class="project-title text-2xl font-bold text-indigo-700 mb-2 transition duration-300">Basic Calculator</h3>
+                        <p class="text-gray-600 mb-4">basic calculator with airthmetic four operations and on output display.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-purple-200 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">HTML</span>
+                            <span class="bg-purple-200 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">CSS</span>
+                            <span class="bg-purple-200 text-purple-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">JavaScript</span>
+                        </div>
+                        <a href="basic_calculator-app-folder/index.html" class="inline-block bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-medium">View Project</a>
+                    </div>
+                </div>
+                <!-- Project Card 3 -->
+                <div class="project-card-hover bg-gray-50 rounded-lg shadow-md overflow-hidden transition duration-300 transform hover:-translate-y-2">
+                    <img src="scientific_calculator-app-folder/assests/images/logo.png" alt="Project 3" class="project-image w-full h-48 object-cover transition duration-300">
+                    <div class="p-6">
+                        <h3 class="project-title text-2xl font-bold text-indigo-700 mb-2 transition duration-300">Scientific Calculator</h3>
+                        <p class="text-gray-600 mb-4">Designed a scientific calculator using html and javascript with logical functions like trignometry and log.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-violet-200 text-violet-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Next.js</span>
+                            <span class="bg-violet-200 text-violet-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Markdown</span>
+                            <span class="bg-violet-200 text-violet-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">CSS Modules</span>
+                        </div>
+                        <a href="scientific_calculator-app-folder/index.html" class="inline-block bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition duration-300 font-medium">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center p-6 mt-12 rounded-t-xl shadow-inner">
+        <p>&copy; 2025 Zaib-un-nisa Arif. All rights reserved.</p>
+        <p class="text-sm mt-2">Built with ❤️ and Tailwind CSS.</p>
+    </footer>
+
+    <script>
+        // JavaScript for Intersection Observer to trigger fade-in animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section-fade-in');
+
+            // Add the 'hidden-initial' class to ensure sections start hidden if JS loads first
+            sections.forEach(section => {
+                section.classList.add('hidden-initial');
+            });
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the section is visible
+            };
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('hidden-initial'); // Remove initial hidden state
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+body {
+  background-color: #111827; /* dark gray */
+  color: #e5e7eb; /* text-gray-200 */
+}
+
+header, footer {
+  background: linear-gradient(to right, #060d17, #060d17); /* gray-800 to gray-900 */
+  color: #f9fafb; /* text-white */
+}
+
+section {
+  background-color: #061223; /* gray-800 */
+  color: #e5e7eb;
+}
+
+a {
+  color: #a78bfa; /* violet-400 */
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #c4b5fd; /* lighter violet */
+}
